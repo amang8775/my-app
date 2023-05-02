@@ -1,0 +1,130 @@
+.login-a {
+    display: block;
+    height: 500px;
+    width: 400px;
+    margin: 5vw auto;
+  }
+ 
+  .login-container {
+    padding: 30px;
+    display: flex;
+    gap: 8px ;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .login-head {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #555;
+  }
+  .login-inp {
+    margin: 10px 0px;
+    height: 40px;
+    padding: 5px 5px;
+    border-radius: 5px;
+    border-color:#ede8e8;
+    border-width: 1px;
+  }
+  .submit-btn{
+    background-color: black;
+    border-radius: 3px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px;
+    width: 100%;
+  }
+  .submit-btn:hover{
+    background-color: #333;
+  }
+  .btn {
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin : 13px 0px;
+    padding: 0 0 ;
+   
+  } 
+  
+  
+  .btn-a {
+    border: none;
+    width: 50%;
+    height: 30px;
+    background: #244c5e;
+  }
+  .btn-a a{
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 15px;
+  }
+  .btn-b {
+    text-decoration: none;
+    border: none;
+    width: 50%;
+    background-color: white;
+    color: orange;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 15px;
+  }
+  .btn-a:hover
+  {
+    background-color: #1c3d4d;
+  }  .btn-b:hover{
+    background-color: rgb(201, 201, 201);
+  }
+  .btn-b a {
+    text-decoration: none;
+    color: orange;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 15px;
+  }
+  @media screen and (max-width : 650px){
+    .login-a { 
+      height: 300px;
+      width: 450px;
+      margin: 30px auto;
+    }
+    .login-container {
+      padding: 10px 10px;
+    }
+    .login-head {
+     letter-spacing: 1px;
+    }
+    .btn-a {
+      height: 30px;
+      width: 100px;
+      letter-spacing: 1px;
+      font-size: 15px;
+    }
+  }
+  @media screen and (max-width : 500px){
+    .login-a { 
+      height: 300px;
+      width: 290px;
+      margin: 10px auto;
+    }
+    .login-container {
+      padding: 10px 10px;
+    }
+    .login-head {
+     letter-spacing: 1px;
+    }
+    .btn-a {
+      height: 30px;
+      width: 100px;
+      letter-spacing: 1px;
+      font-size: 15px;
+    }
+  }

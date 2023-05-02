@@ -1,0 +1,57 @@
+body{
+display: block;
+}
+.App{
+    padding-top: 60px    ;
+}
+.charts{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px;
+    gap: 40px;
+    justify-content: space-around;
+    
+}
+.leaderboard {
+    background-color: #031116;
+    color: #FFFFFF;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  @media only screen and (max-width:1350px) {
+    .charts{
+      justify-content: center;
+    }
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+   
+  }
+  
+  thead {
+    background-color: #FFFFFF;
+    color: #031116;
+  }
+  
+  th, td {
+    padding: 10px;
+  }
+  
+  th {
+    text-transform: uppercase;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #333333;
+  }
+   h2{
+    text-align: center;
+    font-size: xx-large  ;
+   }
+   .container{
+    padding-bottom: 50px;
+   }

@@ -1,0 +1,59 @@
+  .navbar{
+    display: flex;
+    width: 100%;
+    height: 70px;
+    position: relative;
+    background-color:#04060ABF;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    color: white ;
+    font-size: 30px;
+    position: absolute;
+
+    z-index: 100;
+    top:0;
+  }
+  .navbar-brand{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    cursor: pointer;
+  }
+  .nav-img{
+    display: inline-block;
+    width: 70px;
+    object-fit: contain;
+    margin-left: 10px;
+  }
+  .nav-time{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .stopwatch{
+    width: 83px;
+    height: 30px;
+  }
+  .nav-btn{
+    margin-right: 20px; 
+    background-color: white;
+    color :#051217;
+    padding: 5px ;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 3px;
+
+
+  }
+  .nav-btn:hover{
+    transform: scale(105%);
+    transition: all;
+    transition-duration: 200ms;
+  }
+  
+
+
+
+
