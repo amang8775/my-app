@@ -13,7 +13,7 @@ export default function Navbar() {
     {
       try {
         console.log("pehlli call");
-        await axios.get("/user/logout");
+        await axios.get("https://aman-escape-game-backend.onrender.com/user/logout");
         setIsLogged(false) ; 
         localStorage.setItem("firstLogin",false);
         console.log("doosri call");

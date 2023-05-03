@@ -58,7 +58,7 @@ export default function PuzzlerModal() {
       //  make call to backend and update the solved time
       const fun = async () => {
         await axios.post(
-          "https://aman-escape-game-backend.onrender.com/api/v1/user/update",
+          "https://aman-escape-game-backend.onrender.com/user/update",
           {
             puzzleName: "puzzlerModalPuzzle",
             newTime: solvedTime,

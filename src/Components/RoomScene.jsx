@@ -63,7 +63,7 @@ export default function RoomScene() {
     ) {
       setIsCompleted(true) ; 
       const fun = async(req,res)=>{
-        await axios.post('https://aman-escape-game-backend.onrender.com/api/v1/user/updatetotaltime' , {
+        await axios.post('https://aman-escape-game-backend.onrender.com/user/updatetotaltime' , {
           newTime : time 
         }, {
           headers : { 

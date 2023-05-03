@@ -17,7 +17,7 @@ export default function Register() {
     };
 
     try {
-      await axios.post('https://aman-escape-game-backend.onrender.com/api/v1/user/register',user);
+      await axios.post('https://aman-escape-game-backend.onrender.com/user/register',user);
       localStorage.setItem('firstLogin',true);
       window.location.href = "/";
     } catch (error) {

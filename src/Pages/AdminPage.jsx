@@ -12,7 +12,7 @@ export default function AdminPage() {
   const { token } = useContext(AppContext);
   useEffect(() => {
     const fun = async () => {
-      const res = await axios.get("https://aman-escape-game-backend.onrender.com/api/v1/user/leaderBoard", {
+      const res = await axios.get("https://aman-escape-game-backend.onrender.com/user/leaderBoard", {
         headers: {
           Authorization: token,
         },

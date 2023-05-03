@@ -15,11 +15,10 @@ export default function Login() {
     e.preventDefault();
     try {
        console.log("tessri call ");
-       const data = await axios.post('https://aman-escape-game-backend.onrender.com/api/v1/user/login',{email : email.current.value , password : password.current.value});
-       console.log(data);
+       const data = await axios.post('https://aman-escape-game-backend.onrender.com/user/login',{email : email.current.value , password : password.current.value});
+       console.log("login" , data);
        setIsLogged(true) ; 
        localStorage.setItem('firstLogin',true);
-       console.log("chauthi  call ");
        navigate('/') ; 
 
       

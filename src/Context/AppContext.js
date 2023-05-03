@@ -33,13 +33,12 @@ export default function AppContextProvider({children}){
       
       if (firstLogin) {
         const refreshToken = async () => {
-          console.log("panchvi call");
-          console.log("hello from use");
-          const res = await axios.get("https://aman-escape-game-backend.onrender.com/api/v1/user/refreshtoken");
+          
+          const res = await axios.get("https://aman-escape-game-backend.onrender.com/user/refreshtoken");
           console.log(res.data.accesstoken);
           setToken(res.data.accesstoken);
           setIsLogged(true) ;
-          const user = await axios.get("https://aman-escape-game-backend.onrender.com/api/v1/user/info" , {
+          const user = await axios.get("https://aman-escape-game-backend.onrender.com/user/info" , {
             headers : {
               Authorization : res.data.accesstoken
             }
@@ -55,7 +54,6 @@ export default function AppContextProvider({children}){
             refreshToken();
           }, 10 * 60 * 1000);
 
-          console.log("cahtti call ");
         };
         refreshToken();
       }
