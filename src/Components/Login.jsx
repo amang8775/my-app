@@ -10,19 +10,15 @@ export default function Login() {
   const email = useRef();
   const password = useRef();
   const navigate = useNavigate() ; 
-  const {isLogged , setIsLogged} = useContext(AppContext) ; 
+  const {isLogged , setIsLogged , token , setToken } = useContext(AppContext) ; 
   const handleLoginClick = async(e) => {
     e.preventDefault();
     try {
-       console.log("tessri call ");
-       const data = await axios.post('https://aman-escape-game-backend.onrender.com/user/login',{email : email.current.value , password : password.current.value});
-       console.log("login" , data);
-       setIsLogged(true) ; 
-       localStorage.setItem('firstLogin',true);
-       navigate('/') ; 
-
-      
-      
+      const res = await axios.post('https://aman-escape-game-backend.onrender.com/user/login',{email : email.current.value , password : password.current.value});
+      localStorage.setItem('firstLogin',res.data.accesstoken);
+      setToken(res.data.accesstoken) ; 
+      setIsLogged(true);
+      navigate('/') ;     
     } catch (error) {
       alert(error.response.data)
     }

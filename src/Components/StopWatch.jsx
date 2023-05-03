@@ -2,31 +2,29 @@ import React, { useState, useRef, useContext, useEffect } from "react";
 import { AppContext } from "../Context/AppContext";
 
 function Stopwatch() {
-  const { time, setTime, isRunning, setIsRunning, isCompleted , token} =
-    useContext(AppContext);
+  const { time, setTime, isLogged , token  } = useContext(AppContext);
   const intervalRef = useRef(null);
 
   useEffect(() => {
-    if (!isCompleted) {
-      setIsRunning(true);
+    console.log("stopwatch ", { "isLogged": isLogged });
+    if (isLogged) {
       intervalRef.current = setInterval(() => {
-        setTime((prevTime) => prevTime + 1);
+        setTime((temp) => temp + 1);
       }, 1000);
+    } else {
+      console.log("Setting time 0 ");
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+      setTime(0);
     }
-    else{
-        clearInterval(intervalRef.current);
-        setIsRunning(false);
-    }
-  }, [isCompleted , token ]);
-
- 
-  
+  }, [isLogged , token ]);
 
   const formatTime = (time) => {
-    const minutes = Math.floor(time / 60)
+    let temp = time ; 
+    const minutes = Math.floor(temp / 60)
       .toString()
       .padStart(2, "0");
-    const seconds = (time % 60).toString().padStart(2, "0");
+    const seconds = (temp % 60).toString().padStart(2, "0");
     return `${minutes}:${seconds}`;
   };
 

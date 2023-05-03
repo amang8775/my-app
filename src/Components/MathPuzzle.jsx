@@ -69,7 +69,7 @@ export default function MathPuzzle() {
 
         const fun = async () => {
           await axios.post(
-            "https://aman-escape-game-backend.onrender.com/api/v1/user/update",
+            "https://aman-escape-game-backend.onrender.com/user/update",
             {
               puzzleName: "mathPuzzle",
               newTime: solvedTime,

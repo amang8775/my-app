@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRef  } from "react";
 import axios from "axios";
+import { AppContext } from "../Context/AppContext";
 
 export default function Register() {
   const username = useRef();
   const email = useRef();
   const password = useRef();
+  const navigate = useNavigate() ; 
+
+  const {setIsLogged,setToken} = useContext(AppContext) ; 
   const handleSubmitClick = async(e)=>{
      e.preventDefault();
      const user = {
@@ -17,12 +21,14 @@ export default function Register() {
     };
 
     try {
-      await axios.post('https://aman-escape-game-backend.onrender.com/user/register',user);
-      localStorage.setItem('firstLogin',true);
-      window.location.href = "/";
+      const res =  await axios.post('https://aman-escape-game-backend.onrender.com/user/register',user );
+      console.log("accessToken" ,res.data.accesstoken);
+      localStorage.setItem('firstLogin',res.data.accesstoken);
+      setToken(res.data.accesstoken) ; 
+      setIsLogged(true) ; 
+      navigate('/') ; 
     } catch (error) {
-      
-      alert(error.response.data);
+      console.log("error in registtration" , error);
     } 
   }
   return (

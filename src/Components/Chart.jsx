@@ -13,7 +13,7 @@ function Chart() {
     const fun = async () => {
       try {
         console.log("hello from chart ", token);
-        const res = await axios.get("https://aman-escape-game-backend.onrender.com/api/v1/user/getAverageTime", {
+        const res = await axios.get("https://aman-escape-game-backend.onrender.com/user/getAverageTime", {
           headers: {
             Authorization: token,
           },
@@ -84,7 +84,6 @@ function Chart() {
     <div className="App">
       <div style={{ width: 600 }}>
         <BarChart chartData={plotData} />
-        <PieChart chartData={plotData} />
       </div>
     </div>
   );

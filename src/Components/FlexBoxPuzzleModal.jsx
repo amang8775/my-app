@@ -93,7 +93,7 @@ export default function FlexBoxPuzzleModal() {
        const solvedTime = time - prevTime ; 
        const fun = async () => {
         await axios.post(
-          "https://aman-escape-game-backend.onrender.com/api/v1/user/update",
+          "https://aman-escape-game-backend.onrender.com/user/update",
           {
             puzzleName: "flexboxPuzzle",
             newTime: solvedTime,
