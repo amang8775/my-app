@@ -30,7 +30,7 @@ export default function RoomScene() {
     isPosterSolved,
     setIsCompleted,
     time,
-    token 
+    token , loading , setloading 
   } = useContext(AppContext);
   useEffect(() => {
     if (isAbacusSolved) {
@@ -63,6 +63,7 @@ export default function RoomScene() {
     ) {
       setIsCompleted(true) ; 
       const fun = async(req,res)=>{
+        
         await axios.post('https://aman-escape-game-backend.onrender.com/user/updatetotaltime' , {
           newTime : time 
         }, {
@@ -70,6 +71,8 @@ export default function RoomScene() {
             Authorization : token 
           }
         })
+
+        
 
       }; 
 
@@ -102,6 +105,7 @@ export default function RoomScene() {
     <div>
       <div id="escaped">
         <h1>Escape!</h1>
+         
       </div>
      
       <svg

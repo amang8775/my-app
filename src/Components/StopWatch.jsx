@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext, useEffect } from "react";
+import React, {  useRef, useContext, useEffect } from "react";
 import { AppContext } from "../Context/AppContext";
 
 function Stopwatch() {
@@ -6,13 +6,13 @@ function Stopwatch() {
   const intervalRef = useRef(null);
 
   useEffect(() => {
-    console.log("stopwatch ", { "isLogged": isLogged });
+ 
     if (isLogged) {
       intervalRef.current = setInterval(() => {
         setTime((temp) => temp + 1);
       }, 1000);
     } else {
-      console.log("Setting time 0 ");
+   
       clearInterval(intervalRef.current);
       intervalRef.current = null;
       setTime(0);

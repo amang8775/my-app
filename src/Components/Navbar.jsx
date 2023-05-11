@@ -3,15 +3,15 @@ import "./Navbar.css";
 import Stopwatch from "./StopWatch";
 import { AppContext } from "../Context/AppContext";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 export default function Navbar() {
-  const { setIsAdmin ,  setIsLogged, setToken } = useContext(AppContext);
+  const { setIsAdmin ,  setIsLogged, setToken , setTime} = useContext(AppContext);
   const navigate = useNavigate();
   const handleClick = () => {
     localStorage.removeItem("firstLogin");
     setIsLogged(false);
     setToken(false);
     setIsAdmin(false) ; 
+    setTime(0) ; 
     navigate("/login");
   };
   return (
@@ -30,7 +30,7 @@ export default function Navbar() {
 
         <div className="nav-time">
           <Stopwatch />
-          Open The Door 
+          Open The Door
         </div>
 
         <div

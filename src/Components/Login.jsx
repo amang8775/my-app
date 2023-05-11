@@ -5,26 +5,36 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRef } from "react";
 import axios from "axios";
 import { AppContext } from "../Context/AppContext";
+import Loading from "./Loading";
 
 export default function Login() {
   const email = useRef();
   const password = useRef();
-  const navigate = useNavigate() ; 
-  const {isLogged , setIsLogged , token , setToken } = useContext(AppContext) ; 
-  const handleLoginClick = async(e) => {
+  const navigate = useNavigate();
+  const { isLogged, setIsLogged, token, setToken, setLoading , loading  } =
+    useContext(AppContext);
+  const handleLoginClick = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://aman-escape-game-backend.onrender.com/user/login',{email : email.current.value , password : password.current.value});
-      localStorage.setItem('firstLogin',res.data.accesstoken);
-      setToken(res.data.accesstoken) ; 
+      setLoading(true);
+    
+      const res = await axios.post(
+        "https://aman-escape-game-backend.onrender.com/user/login",
+        { email: email.current.value, password: password.current.value }
+      );
+      localStorage.setItem("firstLogin", res.data.accesstoken);
+      setToken(res.data.accesstoken);
       setIsLogged(true);
-      navigate('/') ;     
+      navigate("/");
+      setLoading(false);
     } catch (error) {
-      alert(error.response.data)
+      setLoading(false);
+      alert(error.response.data);
     }
   };
-  return (
-    
+  return loading ? (
+    <Loading />
+  ) : (
     <div className="login-a">
       <div className="login-container">
         <h1 className="login-head">login</h1>
@@ -47,7 +57,7 @@ export default function Login() {
         </button>
         <div className="btn">
           <button className="btn-a">
-            <Link to="/login" >login</Link>
+            <Link to="/login">login</Link>
           </button>
           <button className="btn-b">
             <Link to="/register">register</Link>

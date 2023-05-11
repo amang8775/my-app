@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 export const AppContext = createContext();
 
@@ -22,11 +24,14 @@ export default function AppContextProvider({ children }) {
   const [isCompleted, setIsCompleted] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [loading , setLoading] = useState(false) ; 
+   
+  const navigate = useNavigate() ; 
 
+ 
   const [token, setToken] = useState(false);
   useEffect(() => {
     const firstLogin = localStorage.getItem("firstLogin");
-    console.log("app context " , { "firstLogin" : firstLogin , "isLogged" : isLogged , "token" : token});
     if (firstLogin) {
       const fun = async () => {
         const res = await axios.get("https://aman-escape-game-backend.onrender.com/user/info", {
@@ -35,10 +40,12 @@ export default function AppContextProvider({ children }) {
           },
         });
         const user = res.data ; 
-        console.log("user" , user);
+       
         if (user.role === "admin") {
-          console.log("setting user admin");
+       
           setIsAdmin(true);
+          navigate('/admin') ; 
+          
         } else {
           setIsAdmin(false);
         }
@@ -88,7 +95,9 @@ export default function AppContextProvider({ children }) {
     isLogged,
     setIsLogged,
     isAdmin,
-    setIsAdmin
+    setIsAdmin, 
+    loading , 
+    setLoading
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

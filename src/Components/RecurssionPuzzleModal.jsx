@@ -50,7 +50,7 @@ function shuffleCards(array) {
   return array;
 }
 export default function RecurssionPuzzleModal() {
-  const { computer, setComputer,isComputerSolved , setIsComputerSolved , token , time , prevTime , setPrevTime } = useContext(AppContext);
+  const { computer, setComputer,isComputerSolved , setIsComputerSolved , token , time , prevTime , setPrevTime , setLoading } = useContext(AppContext);
   const [statement , setStatement ] = useState("Try to remove all the cards") ; 
   
   useEffect(()=>{
@@ -98,6 +98,7 @@ export default function RecurssionPuzzleModal() {
       const solvedTime = time - prevTime;
       //  make call to backend and update the solved time
       const fun = async () => {
+        
         await axios.post(
           "https://aman-escape-game-backend.onrender.com/user/update",
           {
@@ -108,6 +109,8 @@ export default function RecurssionPuzzleModal() {
             headers: { Authorization: token },
           }
         );
+
+       
       };
       fun();
       //

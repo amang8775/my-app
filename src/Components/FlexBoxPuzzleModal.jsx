@@ -11,7 +11,7 @@ export default function FlexBoxPuzzleModal() {
   const alignArr = ["flex-start" , "flex-end" , "center" , "baseline"] ; 
 
   const ansArr = [0 , 1 , 3 , 2, ] ; 
-  const {box , setBox ,isBoxSolved , setIsBoxSolved , time , prevTime , setPrevTime , token }  = useContext(AppContext) ;
+  const {box , setBox ,isBoxSolved , setIsBoxSolved , time , prevTime , setPrevTime , token , setLoading }  = useContext(AppContext) ;
   const [flexInd  , setFlexInd] = useState(0) ; 
   const [flexDirectionInd  , setFlexDirectionInd] = useState(0) ; 
   const [justifyInd  , setJustifyInd] = useState(0) ; 
@@ -92,6 +92,7 @@ export default function FlexBoxPuzzleModal() {
     if(tempArr.toString() == ansArr.toString()){
        const solvedTime = time - prevTime ; 
        const fun = async () => {
+
         await axios.post(
           "https://aman-escape-game-backend.onrender.com/user/update",
           {
@@ -133,7 +134,7 @@ export default function FlexBoxPuzzleModal() {
     <div>
       <header className="heading">
         <p className="heading__rules">
-          Use the buttons to rearrange the boxes and find the correct alignment!<br/> The box color will change and indicate if you're getting hot or cold.
+          Use the buttons to rearrange the boxes and align them horizontally with proper gap !<br/>
           <br/>
         </p>
         <p className="heading__subtitle"></p>

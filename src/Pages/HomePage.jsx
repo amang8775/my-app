@@ -1,7 +1,7 @@
 import Chart from "../Components/Chart";
 
 import React, { useContext, useEffect } from "react";
-import Stopwatch from "../Components/StopWatch";
+
 import PuzzlerModal from "../Components/PuzzlerModal";
 import MathPuzzle from "../Components/MathPuzzle";
 import FlexBoxPuzzleModal from "../Components/FlexBoxPuzzleModal";
@@ -11,17 +11,17 @@ import RoomScene from "../Components/RoomScene";
 import Navbar from "../Components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../Context/AppContext";
+import Loading from "../Components/Loading";
 
 export default function HomePage() {
   const navigate = useNavigate();
-  const { isAdmin, isLogged } = useContext(AppContext);
+  const { isAdmin, isLogged , loading } = useContext(AppContext);
 
   useEffect(() => {
     const firstLogin = localStorage.getItem("firstLogin");
-    console.log("firstLogin", firstLogin);
-    console.log("admin" , isAdmin);
+  
     if (isAdmin) {
-      navigate("/admin");
+      navigate("/admin"); 
     }
     if (firstLogin === null) {
       navigate("/login");
@@ -29,7 +29,8 @@ export default function HomePage() {
   }, [isAdmin , isLogged]);
 
   return (
-    <div>
+    loading ? <Loading/> : (
+      <div>
       <Navbar />
       <PuzzlerModal />
       <MathPuzzle />
@@ -38,5 +39,7 @@ export default function HomePage() {
       <RecurssionPuzzleModal />
       <RoomScene />
     </div>
+    )
+   
   );
 }

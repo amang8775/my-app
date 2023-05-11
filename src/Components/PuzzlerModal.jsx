@@ -1,9 +1,17 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../Context/AppContext";
-import axios from 'axios';
+import axios from "axios";
 export default function PuzzlerModal() {
-  const { poster, setPoster, isPosterSolved, setIsPosterSolved , time , prevTime , setPrevTime , token } =
-    useContext(AppContext);
+  const {
+    poster,
+    setPoster,
+    isPosterSolved,
+    setIsPosterSolved,
+    time,
+    prevTime,
+    setPrevTime,
+    token,
+  } = useContext(AppContext);
 
   const [statement, setStatement] = useState(
     "Hmm, I can't seem to read this note."
@@ -28,7 +36,6 @@ export default function PuzzlerModal() {
   var ansID = ["0", "6", "8", "1", "2", "7", "4", "3", "5"];
   const droppedID = useRef([0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
-  
   const handleOnDrag = (e) => {
     var newDataItem = e.target;
     var newId = e.target.getAttribute("id");
@@ -43,7 +50,7 @@ export default function PuzzlerModal() {
   const handleOnDrop = (e) => {
     e.target.appendChild(dataItem);
     var ind = e.target.getAttribute("index");
-    
+
     droppedID.current[ind] = dragId;
 
     setDragId();
@@ -250,102 +257,120 @@ export default function PuzzlerModal() {
               </div>
 
               <div className="bottomContainer">
-                <div
-                  className="blank"
-                  index="1"
-                  onDrop={(e) => {
-                    handleOnDrop(e);
-                  }}
-                  onDragOver={(e) => {
-                    handleOnDragOver(e);
-                  }}
-                >
-                  {" "}
+                <div className="outerBorder">
+                  <div
+                    className="blank"
+                    index="1"
+                    onDrop={(e) => {
+                      handleOnDrop(e);
+                    }}
+                    onDragOver={(e) => {
+                      handleOnDragOver(e);
+                    }}
+                  >
+                    {" "}
+                  </div>
                 </div>
-                <div
-                  className="blank"
-                  index="2"
-                  onDrop={(e) => {
-                    handleOnDrop(e);
-                  }}
-                  onDragOver={(e) => {
-                    handleOnDragOver(e);
-                  }}
-                >
-                  {" "}
+
+                <div className="outerBorder">
+                  <div
+                    className="blank"
+                    index="2"
+                    onDrop={(e) => {
+                      handleOnDrop(e);
+                    }}
+                    onDragOver={(e) => {
+                      handleOnDragOver(e);
+                    }}
+                  >
+                    {" "}
+                  </div>
                 </div>
-                <div
-                  className="blank"
-                  index="3"
-                  onDrop={(e) => {
-                    handleOnDrop(e);
-                  }}
-                  onDragOver={(e) => {
-                    handleOnDragOver(e);
-                  }}
-                >
-                  {" "}
+                <div className="outerBorder">
+                  <div
+                    className="blank"
+                    index="3"
+                    onDrop={(e) => {
+                      handleOnDrop(e);
+                    }}
+                    onDragOver={(e) => {
+                      handleOnDragOver(e);
+                    }}
+                  >
+                    {" "}
+                  </div>
                 </div>
-                <div
-                  className="blank"
-                  index="4"
-                  onDrop={(e) => {
-                    handleOnDrop(e);
-                  }}
-                  onDragOver={(e) => {
-                    handleOnDragOver(e);
-                  }}
-                >
-                  {" "}
+                <div className="outerBorder">
+                  <div
+                    className="blank"
+                    index="4"
+                    onDrop={(e) => {
+                      handleOnDrop(e);
+                    }}
+                    onDragOver={(e) => {
+                      handleOnDragOver(e);
+                    }}
+                  >
+                    {" "}
+                  </div>
                 </div>
-                <div
-                  className="blank"
-                  index="5"
-                  onDrop={(e) => {
-                    handleOnDrop(e);
-                  }}
-                  onDragOver={(e) => {
-                    handleOnDragOver(e);
-                  }}
-                >
-                  {" "}
+                <div className="outerBorder">
+                  <div
+                    className="blank"
+                    index="5"
+                    onDrop={(e) => {
+                      handleOnDrop(e);
+                    }}
+                    onDragOver={(e) => {
+                      handleOnDragOver(e);
+                    }}
+                  >
+                    {" "}
+                  </div>
                 </div>
-                <div
-                  className="blank"
-                  index="6"
-                  onDrop={(e) => {
-                    handleOnDrop(e);
-                  }}
-                  onDragOver={(e) => {
-                    handleOnDragOver(e);
-                  }}
-                >
-                  {" "}
+                <div className="outerBorder">
+                  <div
+                    className="blank"
+                    index="6"
+                    onDrop={(e) => {
+                      handleOnDrop(e);
+                    }}
+                    onDragOver={(e) => {
+                      handleOnDragOver(e);
+                    }}
+                  >
+                    {" "}
+                  </div>
                 </div>
-                <div
-                  className="blank"
-                  index="7"
-                  onDrop={(e) => {
-                    handleOnDrop(e);
-                  }}
-                  onDragOver={(e) => {
-                    handleOnDragOver(e);
-                  }}
-                >
-                  {" "}
+                <div className="outerBorder">
+                  <div
+                    className="blank"
+                    index="7"
+                    onDrop={(e) => {
+                      handleOnDrop(e);
+                    }}
+                    onDragOver={(e) => {
+                      handleOnDragOver(e);
+                    }}
+                  >
+                    {" "}
+                  </div>
                 </div>
-                <div
-                  className="blank"
-                  index="8"
-                  onDrop={(e) => {
-                    handleOnDrop(e);
-                  }}
-                  onDragOver={(e) => {
-                    handleOnDragOver(e);
-                  }}
-                >
-                  {" "}
+                <div className="outerBorder">
+                  <div
+                    className="blank"
+                    index="8"
+                    onDrop={(e) => {
+                      handleOnDrop(e);
+                    }}
+                    onDragOver={(e) => {
+                      handleOnDragOver(e);
+                    }}
+                  >
+                    {" "}
+                  </div>
                 </div>
+                
               </div>
             </div>
           </div>

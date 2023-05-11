@@ -4,14 +4,16 @@ import Navbar from "../Components/Navbar";
 import "./admin.scss";
 import { AppContext } from "../Context/AppContext";
 import axios from "axios";
-import PieChart from "../Components/PieChart";
+
+import Loading from "../Components/Loading";
 
 export default function AdminPage() {
   const [list, setList] = useState([]);
   const [itemsList, setItemsList] = useState();
-  const { token } = useContext(AppContext);
+  const { token , loading , setLoading } = useContext(AppContext);
   useEffect(() => {
     const fun = async () => {
+      setLoading(true) ; 
       const res = await axios.get("https://aman-escape-game-backend.onrender.com/user/leaderBoard", {
         headers: {
           Authorization: token,
@@ -23,6 +25,7 @@ export default function AdminPage() {
       });
       arr.splice(0,1) ; 
       setList(arr);
+      setLoading(false) ; 
     };
     fun();
   }, [token]);
@@ -46,11 +49,10 @@ export default function AdminPage() {
     }
   }, [list]);
 
-  if (list.length === 0) {
-    return <div>Loading</div>;
-  }
+  
   return (
-    <div>
+    loading ? <Loading/> : (
+      <div>
       <Navbar />
       <div className="charts">
         <Chart />
@@ -69,5 +71,7 @@ export default function AdminPage() {
         </table>
       </div>
     </div>
+    )
+    
   );
 }

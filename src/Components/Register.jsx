@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useRef  } from "react";
 import axios from "axios";
 import { AppContext } from "../Context/AppContext";
+import Loading from "./Loading";
 
 export default function Register() {
   const username = useRef();
@@ -11,7 +12,7 @@ export default function Register() {
   const password = useRef();
   const navigate = useNavigate() ; 
 
-  const {setIsLogged,setToken} = useContext(AppContext) ; 
+  const {setIsLogged,setToken , loading , setLoading} = useContext(AppContext) ; 
   const handleSubmitClick = async(e)=>{
      e.preventDefault();
      const user = {
@@ -21,18 +22,22 @@ export default function Register() {
     };
 
     try {
+      setLoading(true) ; 
       const res =  await axios.post('https://aman-escape-game-backend.onrender.com/user/register',user );
-      console.log("accessToken" ,res.data.accesstoken);
+ 
       localStorage.setItem('firstLogin',res.data.accesstoken);
       setToken(res.data.accesstoken) ; 
       setIsLogged(true) ; 
+      setLoading(false) ; 
       navigate('/') ; 
+      
     } catch (error) {
       console.log("error in registtration" , error);
     } 
   }
   return (
-    <div className="login-a">
+    loading ?  <Loading/> : (
+      <div className="login-a">
       <div className="login-container">
         <h1 className="login-head">register</h1>
         <input
@@ -69,5 +74,7 @@ export default function Register() {
         </div>
       </div>
     </div>
+    )
+   
   );
 }

@@ -3,16 +3,17 @@ import BarChart from "./BarChart";
 import { UserData } from "./data";
 import axios from "axios";
 import { AppContext } from "../Context/AppContext";
-import PieChart from "./PieChart";
+
 
 function Chart() {
-  const { token } = useContext(AppContext);
+  const { token , setLoading} = useContext(AppContext);
   const [graphData, setGraphData] = useState();
   const [plotData, setPlotData] = useState();
   useEffect(() => {
     const fun = async () => {
       try {
-        console.log("hello from chart ", token);
+        
+        
         const res = await axios.get("https://aman-escape-game-backend.onrender.com/user/getAverageTime", {
           headers: {
             Authorization: token,
@@ -22,10 +23,11 @@ function Chart() {
         const arr = Object.entries(res.data[0]).map(([key, value]) => {
           return { key, value };
         });
-        arr.splice(0, 1);
-        console.log(arr);
+  
         setGraphData(arr);
+        
       } catch (error) {
+        
         console.log("not fetch average time", error);
       }
     };
@@ -33,7 +35,7 @@ function Chart() {
   }, [token]);
 
   useEffect(() => {
-    console.log(graphData);
+
     if (graphData) {
       const temp = {
         labels: graphData.map((data) => data.key),
@@ -53,7 +55,7 @@ function Chart() {
           },
         ],
       };
-      console.log("temp", temp);
+ 
       setPlotData(temp);
     }
   }, [graphData]);
